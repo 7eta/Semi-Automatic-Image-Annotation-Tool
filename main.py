@@ -333,8 +333,7 @@ class MainGUI:
         self.parent.protocol('WM_DELETE_WINDOW', self.on_closing)
     
     def custom_model_weights(self):
-        self.customWeightsInput = filedialog.ask
-	filename(title="Select Weight", filetypes=(("h5 file", "*.h5"),
+        self.customWeightsInput = filedialog.askopenfilename(title="Select Weight", filetypes=(("h5 file", "*.h5"),
                                                                                     ("all files", "*.*")), 
                                                                                     initialdir='weights/')
         self.add_model_win.focus_force()
