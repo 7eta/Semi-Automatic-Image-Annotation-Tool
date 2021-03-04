@@ -3,6 +3,7 @@ warnings.filterwarnings('ignore')
 #--------------------------- GUI packages _____________________
 from tkinter import *
 from tkinter import filedialog
+from tkinter import messagebox
 from PIL import Image, ImageTk
 from yolo import *
 #----------------------- Keras packages -------------------
@@ -332,7 +333,8 @@ class MainGUI:
         self.parent.protocol('WM_DELETE_WINDOW', self.on_closing)
     
     def custom_model_weights(self):
-        self.customWeightsInput = filedialog.askopenfilename(title="Select Weight", filetypes=(("h5 file", "*.h5"),
+        self.customWeightsInput = filedialog.ask
+	filename(title="Select Weight", filetypes=(("h5 file", "*.h5"),
                                                                                     ("all files", "*.*")), 
                                                                                     initialdir='weights/')
         self.add_model_win.focus_force()
@@ -382,7 +384,7 @@ class MainGUI:
     def open_next(self, event=None):
         self.save_filtered_img()
         self.save()
-        if self.cur < len(self.imageList):
+        if self.cur < len(self.imageList)-1:
             self.cur += 1
             self.load_image(self.imageDirPathBuffer + '/' + self.imageList[self.cur])
         self.processingLabel.config(text="")
